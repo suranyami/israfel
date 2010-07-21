@@ -1,5 +1,5 @@
 (function(){
-  var EquilateralTriangle, Point, Polygon, p1, p2, p3, toRadians;
+  var EquilateralTriangle, PlanarMap, Point, Polygon, canvas, p1, p2, p3, toRadians;
   var __slice = Array.prototype.slice;
   toRadians = function(degrees) {
     return degrees * Math.PI / 180;
@@ -41,9 +41,11 @@
     return "" + (path) + "z\n";
   };
 
+  PlanarMap = function() {  };
+
   EquilateralTriangle = function(p, length) {
     var height, p2, p3;
-    height = length * Math.cos(toRadians(30));
+    height = length * Math.cos(toRadians(60));
     p2 = new Point(p.x + (length / 2), height);
     p3 = new Point(p.x - (length / 2), height);
     this.polygon = new Polygon(p, p2, p3);
@@ -56,9 +58,6 @@
   p1 = new Point(2, 3);
   p2 = new Point(3, 3);
   p3 = new Point(4, 3);
-  print(new Polygon(p1).toPath());
-  print(new Polygon(p1, p2).toPath());
-  print(new Polygon(p1, p2, p3).toPath());
-  print(new Polygon(p1, p2, p3).toPath());
-  print(new EquilateralTriangle(new Point(0, 0), 10).toPath());
+  canvas = Raphael("canvas", 200, 200);
+  canvas.path(new EquilateralTriangle(new Point(100, 100), 50).toPath());
 })();
