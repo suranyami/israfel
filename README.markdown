@@ -1,7 +1,7 @@
 Israfel
 =======
 
-Building Islamic star patterns with Raphael js and Coffeescript.
+Building Islamic star patterns with Raphaël and Coffeescript.
 
 Inspiration
 -----------
@@ -22,3 +22,10 @@ Etymology
 ---------
 
 The name Israfel comes from the Arabic name for Raphael.
+
+Authors
+-------
+
+[David Parry](http://twitter.com/suranyami)
+
+[Josh Price](http://twitter.com/joshprice)
