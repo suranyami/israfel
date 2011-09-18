@@ -1,33 +1,32 @@
 (function() {
   var Polygon;
-  var __slice = Array.prototype.slice;
   window.Polygon = Polygon = (function() {
     Polygon.points = [];
-    function Polygon() {
-      var first, rest;
-      first = arguments[0], rest = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      this.first = first;
-      this.rest = rest;
+    function Polygon(points) {
+      this.points = points;
     }
     Polygon.prototype.toPath = function() {
-      var path, point, _i, _len, _ref;
-      path = this.first.moveTo();
-      _ref = this.rest;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        point = _ref[_i];
-        path += point.lineTo();
-      }
+      var path, point, points;
+      points = this.points.slice(0);
+      path = points.pop().moveTo();
+      path += " " + ((function() {
+        var _i, _len, _results;
+        _results = [];
+        for (_i = 0, _len = points.length; _i < _len; _i++) {
+          point = points[_i];
+          _results.push(point.lineTo());
+        }
+        return _results;
+      })()).join(" ");
       return "" + path + "z";
     };
     Polygon.prototype.pointInside = function(other) {
-      var a, ax, ay, b, check_points, max, min, outside, point, start_point, _i, _len;
+      var a, b, check_points, max, min, outside, point, _i, _len;
       outside = false;
-      ax = a.getX();
-      ay = a.getY();
       min = new Point;
       max = new Point;
-      check_points = this.points.copy.slice(0);
-      start_point = check_points.pop();
+      check_points = this.points.slice(0);
+      a = check_points.pop();
       for (_i = 0, _len = check_points.length; _i < _len; _i++) {
         point = check_points[_i];
         b = point;

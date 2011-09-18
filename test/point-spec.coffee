@@ -10,5 +10,9 @@ describe "Point", ->
 
   describe "moveTo", ->
     it "should have an M followed by 2 numbers separated by a space", ->
-      (expect @point.moveTo()).toMatch SPACE_DIGITS
+      (expect @point.moveTo()).toMatch /^M[0-9]+ [0-9]+/
+
+  describe "lineTo", ->
+    it "should have an L followed by 2 numbers separated by a space", ->
+      (expect @point.lineTo()).toMatch /^L[0-9]+ [0-9]+/
 

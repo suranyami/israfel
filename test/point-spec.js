@@ -10,9 +10,14 @@
         return (expect(this.point.toPath())).toMatch(SPACE_DIGITS);
       });
     });
-    return describe("moveTo", function() {
+    describe("moveTo", function() {
       return it("should have an M followed by 2 numbers separated by a space", function() {
-        return (expect(this.point.moveTo())).toMatch(SPACE_DIGITS);
+        return (expect(this.point.moveTo())).toMatch(/^M[0-9]+ [0-9]+/);
+      });
+    });
+    return describe("lineTo", function() {
+      return it("should have an L followed by 2 numbers separated by a space", function() {
+        return (expect(this.point.lineTo())).toMatch(/^L[0-9]+ [0-9]+/);
       });
     });
   });

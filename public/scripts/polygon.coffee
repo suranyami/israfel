@@ -1,27 +1,22 @@
 window.Polygon = class Polygon
   @points = []
   
-  constructor: (first, rest...) ->
-    @first = first
-    @rest = rest
+  constructor: (@points) ->
     
   toPath: ->
-    path = @first.moveTo()
-    for point in @rest
-      path += point.lineTo()
+    points = @points.slice(0)
+    path = points.pop().moveTo()
+    path += " " + (point.lineTo() for point in points).join(" ")
     "#{path}z"
-
 
   pointInside: (other) ->
     outside = false
-    ax = a.getX()
-    ay = a.getY()
-    
+
     min = new Point
     max = new Point
 
-    check_points = @points.copy[0...]
-    start_point = check_points.pop()
+    check_points = @points[0...]
+    a = check_points.pop()
 
     for point in check_points
       b = point
