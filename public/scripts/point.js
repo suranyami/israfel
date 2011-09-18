@@ -1,6 +1,6 @@
 (function() {
   var Point;
-  Point = (function() {
+  window.Point = Point = (function() {
     function Point(x, y) {
       this.x = x;
       this.y = y;

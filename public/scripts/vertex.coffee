@@ -1,5 +1,5 @@
 # A point where a number of Edges meet.
-class Vertex
+window.Vertex = class Vertex
   constructor: (point) ->
     @point = point
     @edges = []

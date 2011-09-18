@@ -1,4 +1,5 @@
 (function() {
+  require('polygon');
   $(document).ready(function() {
     var canvas, triangle, triangle_path;
     canvas = Raphael("paper", 800, 600);

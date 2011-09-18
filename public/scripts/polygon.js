@@ -1,7 +1,7 @@
 (function() {
   var Polygon;
   var __slice = Array.prototype.slice;
-  Polygon = (function() {
+  window.Polygon = Polygon = (function() {
     Polygon.points = [];
     function Polygon() {
       var first, rest;
@@ -19,47 +19,39 @@
       }
       return "" + path + "z";
     };
-    Polygon.prototype.pointInside = function(points, start, end, apt) {
-      var a, ax, ay, b, b_y, bx, idx, outside, size, x, xmax, xmin, y, ymax, ymin;
-      size = end - start;
+    Polygon.prototype.pointInside = function(other) {
+      var a, ax, ay, b, check_points, max, min, outside, point, start_point, _i, _len;
       outside = false;
-      x = apt.getX();
-      y = apt.getY();
-      a = points[start];
       ax = a.getX();
       ay = a.getY();
-      xmin = 0.0;
-      ymin = 0.0;
-      xmax = 0.0;
-      ymax = 0.0;
-      for (idx = 0; 0 <= idx ? idx <= idx : idx >= idx; 0 <= idx ? idx++ : idx--) {
-        b = points[(idx + start + 1) % size];
-        bx = b.getX();
-        b_y = b.getY();
-        if (ax < bx) {
-          xmin = ax;
-          ymin = ay;
-          xmax = bx;
-          ymax = b_y;
+      min = new Point;
+      max = new Point;
+      check_points = this.points.copy.slice(0);
+      start_point = check_points.pop();
+      for (_i = 0, _len = check_points.length; _i < _len; _i++) {
+        point = check_points[_i];
+        b = point;
+        if (a.x < b.x) {
+          min.x = a.x;
+          min.y = a.y;
+          max.x = b.x;
+          max.y = b.y;
         } else {
-          xmin = bx;
-          ymin = b_y;
-          xmax = ax;
-          ymax = ay;
+          min.x = b.x;
+          min.y = b.y;
+          max.x = a.x;
+          max.y = a.y;
         }
-        if ((xmin <= x) && (x < xmax)) {
-          if ((x - xmin) * (ymax - ymin) > (y - ymin) * (xmax - xmin)) {
+        if ((min.x <= other.x) && (other.x < max.x)) {
+          if ((other.x - min.x) * (max.y - min.y) > (other.y - min.y) * (max.x - min.x)) {
             outside = !outside;
           }
         }
         a = b;
-        ax = bx;
-        ay = b_y;
+        a.x = b.x;
+        a.y = b.y;
       }
       return outside;
-    };
-    Polygon.prototype.containsPoint = function(apt) {
-      return pointInPoly(this.points, 0, size, apt);
     };
     return Polygon;
   })();

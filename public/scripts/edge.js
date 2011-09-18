@@ -1,6 +1,6 @@
 (function() {
   var Edge;
-  Edge = (function() {
+  window.Edge = Edge = (function() {
     function Edge(vertex1, vertex2) {
       this.vertex1 = vertex1;
       this.vertex2 = vertex2;

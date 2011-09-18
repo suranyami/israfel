@@ -1,4 +1,4 @@
-class Edge
+window.Edge = class Edge
   constructor: (@vertex1, @vertex2) ->
     @vertex1.addEdge self
     @vertex2.addEdge self

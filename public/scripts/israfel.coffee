@@ -1,3 +1,4 @@
+require 'polygon'
 
 $(document).ready ->
   canvas = Raphael("paper", 800, 600)

@@ -1,5 +1,6 @@
-class Point
-  constructor: (x, y) -> @x = x; @y = y
+window.Point = class Point
+  constructor: (@x, @y) ->
+    
   toString: -> "(#{@x}, #{@y})"
   toPath: -> "#{@x} #{@y}"
   moveTo: -> "M#{@toPath()}"

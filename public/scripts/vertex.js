@@ -6,7 +6,7 @@
     }
     return -1;
   };
-  Vertex = (function() {
+  window.Vertex = Vertex = (function() {
     function Vertex(point) {
       this.point = point;
       this.edges = [];
