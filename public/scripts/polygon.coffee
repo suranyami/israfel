@@ -1,4 +1,4 @@
-class Polygon
+window.Polygon = class Polygon
   @points = []
   
   constructor: (first, rest...) ->
@@ -12,52 +12,40 @@ class Polygon
     "#{path}z"
 
 
-  pointInside: (points, start, end, apt) ->
-    size = end - start
+  pointInside: (other) ->
     outside = false
-
-    x = apt.getX()
-    y = apt.getY()
-
-    a = points[start]
     ax = a.getX()
     ay = a.getY()
+    
+    min = new Point
+    max = new Point
 
-    xmin = 0.0
-    ymin = 0.0
-    xmax = 0.0
-    ymax = 0.0
+    check_points = @points.copy[0...]
+    start_point = check_points.pop()
 
-    for idx in [0..idx]
-      b = points[(idx + start + 1) % size]
+    for point in check_points
+      b = point
 
-      bx = b.getX()
-      b_y = b.getY()
-
-      if ax < bx
-        xmin = ax
-        ymin = ay
-        xmax = bx
-        ymax = b_y
+      if a.x < b.x
+        min.x = a.x
+        min.y = a.y
+        max.x = b.x
+        max.y = b.y
       else
-        xmin = bx
-        ymin = b_y
-        xmax = ax
-        ymax = ay
+        min.x = b.x
+        min.y = b.y
+        max.x = a.x
+        max.y = a.y
 
       # Does it straddle?
-      if (xmin <= x) and (x < xmax)
+      if (min.x <= other.x) and (other.x < max.x)
         # Is the intersection point north?
-        if (x - xmin) * (ymax - ymin) > (y - ymin) * (xmax - xmin)
+        if (other.x - min.x) * (max.y - min.y) > (other.y - min.y) * (max.x - min.x)
           outside = !outside
 
       a = b
-      ax = bx
-      ay = b_y
+      a.x = b.x
+      a.y = b.y
 
     return outside
-
-
-  containsPoint: (apt) ->
-    return pointInPoly @points, 0, size, apt
 
