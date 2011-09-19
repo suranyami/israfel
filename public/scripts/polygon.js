@@ -1,5 +1,13 @@
 (function() {
-  var Polygon;
+  var Polygon, RegularPolygon;
+  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
   window.Polygon = Polygon = (function() {
     Polygon.points = [];
     function Polygon(points) {
@@ -53,5 +61,32 @@
       return outside;
     };
     return Polygon;
+  })();
+  window.RegularPolygon = RegularPolygon = (function() {
+    __extends(RegularPolygon, Polygon);
+    function RegularPolygon(x, y, sides, radius) {
+      var count;
+      this.x = x;
+      this.y = y;
+      this.sides = sides != null ? sides : 3;
+      this.radius = radius != null ? radius : 100;
+      this.angle_inc = Math.PI * 2.0 / this.sides;
+      this.points = (function() {
+        var _ref, _results;
+        _results = [];
+        for (count = 0, _ref = this.sides; 0 <= _ref ? count <= _ref : count >= _ref; 0 <= _ref ? count++ : count--) {
+          _results.push(this.getPoint(count));
+        }
+        return _results;
+      }).call(this);
+    }
+    RegularPolygon.prototype.getPoint = function(index) {
+      var cur_angle, x, y;
+      cur_angle = this.angle_inc * index;
+      x = this.x + this.radius * Math.cos(cur_angle);
+      y = this.y + this.radius * Math.sin(cur_angle);
+      return new Point(x, y);
+    };
+    return RegularPolygon;
   })();
 }).call(this);

@@ -44,3 +44,13 @@ window.Polygon = class Polygon
 
     return outside
 
+window.RegularPolygon = class RegularPolygon extends Polygon
+  constructor: (@x, @y, @sides = 3, @radius = 100) ->
+    @angle_inc = Math.PI * 2.0 / @sides
+    @points = (@getPoint(count) for count in [0..@sides])
+    
+  getPoint: (index) ->
+    cur_angle = @angle_inc * index
+    x = @x + @radius * Math.cos(cur_angle)
+    y = @y + @radius * Math.sin(cur_angle)
+    new Point x, y
