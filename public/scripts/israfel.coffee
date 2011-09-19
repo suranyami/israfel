@@ -40,5 +40,5 @@ $(document).ready ->
   window.paper = Raphael("paper", 800, 600)
   israfel = new Israfel()
   israfel.update()
-  setInterval((-> israfel.update()), 100)
+  setInterval((-> israfel.update()), 1000)
   
