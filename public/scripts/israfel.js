@@ -17,22 +17,22 @@
         color: "black"
       });
       polygon_drawing.attr({
-        fill: "red"
+        fill: "lightgray"
       });
       _results = [];
       for (count = 1; count <= 500; count++) {
         x = Math.random() * 800;
         y = Math.random() * 600;
-        _results.push(polygon.pointInside(new Point(x, y)) ? window.paper.circle(x, y, 5).attr({
-          fill: "green"
+        _results.push(polygon.pointInside(new Point(x, y)) ? window.paper.circle(x, y, 2).attr({
+          fill: "red"
         }).attr({
-          color: "green"
+          color: "red"
         }).attr({
           stroke: "none"
-        }) : window.paper.circle(x, y, 2).attr({
-          fill: "gray"
+        }) : window.paper.circle(x, y, 3).attr({
+          fill: "lightgray"
         }).attr({
-          color: "gray"
+          color: "lightgray"
         }).attr({
           stroke: "none"
         }));
@@ -44,10 +44,10 @@
       $('#sides').text("" + this.sides);
       $('#direction').text("" + this.direction);
       this.draw();
-      if (!((MIN_SIDES <= (_ref = this.sides) && _ref < MAX_SIDES))) {
-        this.direction = -this.direction;
+      this.sides += this.direction;
+      if (!((MIN_SIDES + 1 <= (_ref = this.sides) && _ref < MAX_SIDES))) {
+        return this.direction = -this.direction;
       }
-      return this.sides += this.direction;
     };
     return Israfel;
   })();
@@ -58,6 +58,6 @@
     israfel.update();
     return setInterval((function() {
       return israfel.update();
-    }), 1000);
+    }), 100);
   });
 }).call(this);

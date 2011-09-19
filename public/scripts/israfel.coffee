@@ -12,20 +12,20 @@ window.Israfel = class Israfel
 
     polygon_drawing = window.paper.path polygon.toPath()
     polygon_drawing.attr({color: "black"})
-    polygon_drawing.attr({fill: "red"})
+    polygon_drawing.attr({fill: "lightgray"})
 
     for count in [1..500]
       x = Math.random() * 800
       y = Math.random() * 600
       if polygon.pointInside(new Point x, y)
-        window.paper.circle(x, y, 5)
-          .attr({fill: "green"})
-          .attr({color: "green"})
+        window.paper.circle(x, y, 2)
+          .attr({fill: "red"})
+          .attr({color: "red"})
           .attr({stroke: "none"})
       else
-        window.paper.circle(x, y, 2)
-          .attr({fill: "gray"})
-          .attr({color: "gray"})
+        window.paper.circle(x, y, 3)
+          .attr({fill: "lightgray"})
+          .attr({color: "lightgray"})
           .attr({stroke: "none"})
 
   
@@ -33,12 +33,12 @@ window.Israfel = class Israfel
     $('#sides').text("" + @sides)
     $('#direction').text("" + @direction)
     @draw()
-    @direction = (- @direction) unless MIN_SIDES <= @sides < MAX_SIDES
     @sides += @direction
+    @direction = (- @direction) unless MIN_SIDES + 1 <= @sides < MAX_SIDES
 
 $(document).ready ->
   window.paper = Raphael("paper", 800, 600)
   israfel = new Israfel()
   israfel.update()
-  setInterval((-> israfel.update()), 1000)
+  setInterval((-> israfel.update()), 100)
   
