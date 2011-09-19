@@ -12,9 +12,10 @@ describe "Polygon", ->
   
   describe "with a point inside", ->
     it "has pointInside() true", ->
-      (expect @polygon.pointInside(new Point 1.9, 1.9)).toEqual true
+      for x in [1.9..1.5] by 0.1
+        (expect @polygon.pointInside(new Point x, x)).toEqual true
   
   describe "with a point outside", ->
     it "has pointInside() false", ->
-      (expect @polygon.pointInside(new Point 3, 3)).toEqual false
-      (expect @polygon.pointInside(new Point 1, 1)).toEqual false
+      for x in [1, 3, 10]
+        (expect @polygon.pointInside(new Point x, x)).toEqual false

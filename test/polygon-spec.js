@@ -10,13 +10,24 @@
     });
     describe("with a point inside", function() {
       return it("has pointInside() true", function() {
-        return (expect(this.polygon.pointInside(new Point(1.9, 1.9)))).toEqual(true);
+        var x, _results, _step;
+        _results = [];
+        for (x = 1.9, _step = 0.1; 1.9 <= 1.5 ? x <= 1.5 : x >= 1.5; x += _step) {
+          _results.push((expect(this.polygon.pointInside(new Point(x, x)))).toEqual(true));
+        }
+        return _results;
       });
     });
     return describe("with a point outside", function() {
       return it("has pointInside() false", function() {
-        (expect(this.polygon.pointInside(new Point(3, 3)))).toEqual(false);
-        return (expect(this.polygon.pointInside(new Point(1, 1)))).toEqual(false);
+        var x, _i, _len, _ref, _results;
+        _ref = [1, 3, 10];
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          x = _ref[_i];
+          _results.push((expect(this.polygon.pointInside(new Point(x, x)))).toEqual(false));
+        }
+        return _results;
       });
     });
   });
