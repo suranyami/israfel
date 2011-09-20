@@ -1,13 +1,14 @@
-window.Polygon = class Polygon
-  @points = []
-  
-  constructor: (@points) ->
+window.Polygon = class Polygon  
+  constructor: (@points = []) ->
     
   toPath: ->
     points = @points.slice(0)
     path = points.pop().moveTo()
     path += " " + (point.lineTo() for point in points).join(" ")
     "#{path}z"
+
+  add: (point) ->
+    @points.push(point)
 
   pointInside: (other) ->
     outside = false

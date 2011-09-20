@@ -9,9 +9,8 @@
     return child;
   };
   window.Polygon = Polygon = (function() {
-    Polygon.points = [];
     function Polygon(points) {
-      this.points = points;
+      this.points = points != null ? points : [];
     }
     Polygon.prototype.toPath = function() {
       var path, point, points;
@@ -27,6 +26,9 @@
         return _results;
       })()).join(" ");
       return "" + path + "z";
+    };
+    Polygon.prototype.add = function(point) {
+      return this.points.push(point);
     };
     Polygon.prototype.pointInside = function(other) {
       var a, b, check_points, index, max, min, outside, size, _ref;
