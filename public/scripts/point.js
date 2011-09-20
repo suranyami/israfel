@@ -17,6 +17,16 @@
     Point.prototype.lineTo = function() {
       return "L" + (this.toPath());
     };
+    Point.prototype.randomPoint = function(range_x, range_y) {
+      if (range_x == null) {
+        range_x = 800;
+      }
+      if (range_y == null) {
+        range_y = 600;
+      }
+      this.x = Math.random() * range_x;
+      return this.y = Math.random() * range_y;
+    };
     return Point;
   })();
 }).call(this);
