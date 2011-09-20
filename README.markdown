@@ -6,16 +6,18 @@ Building Islamic star patterns with Raphaël and Coffeescript.
 Inspiration
 -----------
 
-David Parry (@suranyami) introduced me to the concept at Hack Night and had started building it in plain old Javascript. 
+[David Parry](http://twitter.com/suranyami) introduced me to the concept
+at Hack Night and had started building it in plain old Javascript. 
 
 I thought it would be a great project to try out coffeescript with.
+
 
 Design
 ------
 
 Some of the data structures here were useful: 
 
-[http://www.cgl.uwaterloo.ca/~csk/washington/taprats/arch.html]
+[http://www.cgl.uwaterloo.ca/~csk/washington/taprats]
 
 Usage
 -----
@@ -29,6 +31,7 @@ Etymology
 ---------
 
 The name Israfel comes from the Arabic name for Raphael.
+
 
 Authors
 -------
