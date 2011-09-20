@@ -13,9 +13,16 @@ I thought it would be a great project to try out coffeescript with.
 Design
 ------
 
-Some of the data structures here will be useful: 
+Some of the data structures here were useful: 
 
 [http://www.cgl.uwaterloo.ca/~csk/washington/taprats/arch.html]
+
+Usage
+-----
+So far, there is only some basic computational geometry work in the source.
+
+But for a bit of fun, you could open up `public/index.html` in your browser and
+see the Polygon.pointInside algorithm working.
 
 
 Etymology
