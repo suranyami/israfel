@@ -8,6 +8,16 @@ window.Israfel = class Israfel
     
   draw: ->
     window.paper.clear()
+    
+    # Tried this with random polygons.
+    # The pointInside algorithm requires that any intersections need to be split.
+    
+    # polygon = new Polygon
+    # for x in [0..@sides]
+    #   point = new Point()
+    #   point.randomPoint()
+    #   polygon.add(point)
+    
     polygon = new RegularPolygon(400, 300, @sides, 200)
 
     polygon_drawing = window.paper.path polygon.toPath()
@@ -40,5 +50,5 @@ $(document).ready ->
   window.paper = Raphael("paper", 800, 600)
   israfel = new Israfel()
   israfel.update()
-  setInterval((-> israfel.update()), 100)
+  setInterval((-> israfel.update()), 1000)
   

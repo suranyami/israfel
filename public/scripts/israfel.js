@@ -58,6 +58,6 @@
     israfel.update();
     return setInterval((function() {
       return israfel.update();
-    }), 100);
+    }), 1000);
   });
 }).call(this);
