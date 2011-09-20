@@ -29,34 +29,28 @@
       return "" + path + "z";
     };
     Polygon.prototype.pointInside = function(other) {
-      var a, b, check_points, max, min, outside, point, _i, _len;
+      var a, b, check_points, index, max, min, outside, size, _ref;
       outside = false;
       min = new Point;
       max = new Point;
       check_points = this.points.slice(0);
       a = check_points.pop();
-      for (_i = 0, _len = check_points.length; _i < _len; _i++) {
-        point = check_points[_i];
-        b = point;
+      size = this.points.length;
+      for (index = 0; 0 <= size ? index < size : index > size; 0 <= size ? index++ : index--) {
+        b = this.points[(index + 1) % size];
         if (a.x < b.x) {
-          min.x = a.x;
-          min.y = a.y;
-          max.x = b.x;
-          max.y = b.y;
+          min.x = a.x, min.y = a.y;
+          max.x = b.x, max.y = b.y;
         } else {
-          min.x = b.x;
-          min.y = b.y;
-          max.x = a.x;
-          max.y = a.y;
+          min.x = b.x, min.y = b.y;
+          max.x = a.x, max.y = a.y;
         }
-        if ((min.x <= other.x) && (other.x < max.x)) {
+        if ((min.x <= (_ref = other.x) && _ref < max.x)) {
           if ((other.x - min.x) * (max.y - min.y) > (other.y - min.y) * (max.x - min.x)) {
             outside = !outside;
           }
         }
         a = b;
-        a.x = b.x;
-        a.y = b.y;
       }
       return outside;
     };

@@ -15,32 +15,27 @@ window.Polygon = class Polygon
     min = new Point
     max = new Point
 
-    check_points = @points[0...]
+    check_points = @points.slice(0)
+    
     a = check_points.pop()
-
-    for point in check_points
-      b = point
+    size = @points.length
+    for index in [0...size]
+      b = @points[(index + 1) % size]
 
       if a.x < b.x
-        min.x = a.x
-        min.y = a.y
-        max.x = b.x
-        max.y = b.y
+        {x: min.x, y: min.y} = a
+        {x: max.x, y: max.y} = b
       else
-        min.x = b.x
-        min.y = b.y
-        max.x = a.x
-        max.y = a.y
+        {x: min.x, y: min.y} = b
+        {x: max.x, y: max.y} = a
 
       # Does it straddle?
-      if (min.x <= other.x) and (other.x < max.x)
+      if min.x <= other.x < max.x
         # Is the intersection point north?
         if (other.x - min.x) * (max.y - min.y) > (other.y - min.y) * (max.x - min.x)
           outside = !outside
 
       a = b
-      a.x = b.x
-      a.y = b.y
 
     return outside
 
