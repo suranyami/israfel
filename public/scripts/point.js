@@ -2,8 +2,8 @@
   var Point;
   window.Point = Point = (function() {
     function Point(x, y) {
-      this.x = x;
-      this.y = y;
+      this.x = x != null ? x : 0;
+      this.y = y != null ? y : 0;
     }
     Point.prototype.toString = function() {
       return "(" + this.x + ", " + this.y + ")";
