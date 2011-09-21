@@ -6,6 +6,9 @@ window.Point = class Point
   moveTo: -> "M#{@toPath()}"
   lineTo: -> "L#{@toPath()}"
 
-  randomPoint: (range_x = 800, range_y = 600)->
+  randomPoint: (range_x = 800, range_y = 600) ->
     @x = Math.random() * range_x
     @y = Math.random() * range_y
+  
+  clone: () ->
+    new Point @x, @y
