@@ -11,12 +11,10 @@
     return describe("with a point outside", function() {
       return it("has pointInside() false", function() {
         var x, _i, _len, _ref, _results;
-        _ref = [1, 3, 10];
+        _ref = [0.9, 2.1, 3, 10];
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           x = _ref[_i];
-          console.log(x);
-          console.log(this.polygon.pointInside(new Point(x, x)));
           _results.push((expect(this.polygon.pointInside(new Point(x, x)))).toEqual(false));
         }
         return _results;
