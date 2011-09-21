@@ -19,10 +19,9 @@ window.Polygon = class Polygon
     check_points = @points.slice(0)
     
     a = check_points.pop()
-    size = @points.length
-    for index in [0...size]
-      b = @points[(index + 1) % size]
-
+    check_points.push(a)
+    
+    for b in check_points
       if a.x < b.x
         {x: min.x, y: min.y} = a
         {x: max.x, y: max.y} = b
@@ -39,7 +38,7 @@ window.Polygon = class Polygon
       a = b
 
     return outside
-
+    
 window.RegularPolygon = class RegularPolygon extends Polygon
   constructor: (@x, @y, @sides = 3, @radius = 100) ->
     @angle_inc = Math.PI * 2.0 / @sides
@@ -50,3 +49,5 @@ window.RegularPolygon = class RegularPolygon extends Polygon
     x = @x + @radius * Math.cos(cur_angle)
     y = @y + @radius * Math.sin(cur_angle)
     new Point x, y
+    
+

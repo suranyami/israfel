@@ -31,15 +31,15 @@
       return this.points.push(point);
     };
     Polygon.prototype.pointInside = function(other) {
-      var a, b, check_points, index, max, min, outside, size, _ref;
+      var a, b, check_points, max, min, outside, _i, _len, _ref;
       outside = false;
       min = new Point;
       max = new Point;
       check_points = this.points.slice(0);
       a = check_points.pop();
-      size = this.points.length;
-      for (index = 0; 0 <= size ? index < size : index > size; 0 <= size ? index++ : index--) {
-        b = this.points[(index + 1) % size];
+      check_points.push(a);
+      for (_i = 0, _len = check_points.length; _i < _len; _i++) {
+        b = check_points[_i];
         if (a.x < b.x) {
           min.x = a.x, min.y = a.y;
           max.x = b.x, max.y = b.y;
