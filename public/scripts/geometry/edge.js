@@ -26,6 +26,9 @@
       path += this.vertex2.lineTo();
       return "" + path + "z";
     };
+    Edge.prototype.toString = function() {
+      return "" + this.vertex1 + "-" + this.vertex2;
+    };
     return Edge;
   })();
 }).call(this);

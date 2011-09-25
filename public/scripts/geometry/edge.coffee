@@ -19,3 +19,6 @@ window.Edge = class Edge
     path = @vertex1.moveTo()
     path += @vertex2.lineTo()
     "#{path}z"
+
+  toString: ->
+    "#{@vertex1}-#{@vertex2}"
