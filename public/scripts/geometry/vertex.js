@@ -8,7 +8,7 @@
   };
   window.Vertex = Vertex = (function() {
     function Vertex(point, edges) {
-      this.point = point;
+      this.point = point != null ? point : new Point(0, 0);
       this.edges = edges != null ? edges : [];
     }
     Vertex.prototype.addEdge = function(edge) {
@@ -26,6 +26,9 @@
       if (__indexOf.call(this.edges, edge) >= 0) {
         return this.edges = this.edges.splice(this.edges.indexOf(edge), 1);
       }
+    };
+    Vertex.prototype.toString = function() {
+      return "(" + this.point.x + ", " + this.point.y + ")[" + this.edges.length + "]";
     };
     Vertex.prototype.neighbours = function() {};
     return Vertex;
