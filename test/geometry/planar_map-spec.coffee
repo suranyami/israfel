@@ -33,8 +33,6 @@ describe "PlanarMap", ->
 
   describe "removeEdge", ->
     it "deletes the edge", ->
-
-      
       console.log @edges
       console.log @map.edges
       @map.removeEdge(@edges[0])
