@@ -25,7 +25,8 @@
         range_y = 600;
       }
       this.x = Math.random() * range_x;
-      return this.y = Math.random() * range_y;
+      this.y = Math.random() * range_y;
+      return this;
     };
     Point.prototype.clone = function() {
       return new Point(this.x, this.y);

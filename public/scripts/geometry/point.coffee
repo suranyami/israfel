@@ -9,6 +9,7 @@ window.Point = class Point
   randomPoint: (range_x = 800, range_y = 600) ->
     @x = Math.random() * range_x
     @y = Math.random() * range_y
+    this
   
   clone: () ->
     new Point @x, @y
