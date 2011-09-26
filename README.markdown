@@ -3,21 +3,13 @@ Israfel
 
 Building Islamic star patterns with Raphaël and Coffeescript.
 
-Inspiration
------------
-
-[David Parry](http://twitter.com/suranyami) introduced me to the concept
-at Hack Night and had started building it in plain old Javascript. 
-
-I thought it would be a great project to try out coffeescript with.
-
 
 Design
 ------
 
 Some of the data structures here were useful: 
 
-[http://www.cgl.uwaterloo.ca/~csk/washington/taprats]
+[taprats](http://www.cgl.uwaterloo.ca/~csk/washington/taprats)
 
 Usage
 -----
