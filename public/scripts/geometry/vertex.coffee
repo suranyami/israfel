@@ -1,7 +1,11 @@
+Array::remove = (e) ->
+  @[t..t] = [] if (t = @indexOf(e)) > -1
+
 # A point where a number of Edges meet.
 window.Vertex = class Vertex
-  constructor: (@point = new Point(0, 0), @edges = []) ->
-
+  constructor: (@point = new Point(0, 0), edges) ->
+    @edges = edges ? []
+    
   addEdge: (edge) ->
     @edges.push(edge) unless edge in @edges
 
@@ -9,7 +13,8 @@ window.Vertex = class Vertex
   lineTo: -> @point.LineTo()
   
   removeEdge: (edge) ->
-    @edges = @edges.splice(@edges.indexOf(edge), 1) if edge in @edges
+    @edges.remove(edge)
+    console.log @edges.length
 
   toString: ->
     "(#{@point.x}, #{@point.y})[#{@edges.length}]"

@@ -6,6 +6,12 @@
     }
     return -1;
   };
+  Array.prototype.remove = function(e) {
+    var t, _ref;
+    if ((t = this.indexOf(e)) > -1) {
+      return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);
+    }
+  };
   window.Vertex = Vertex = (function() {
     function Vertex(point, edges) {
       this.point = point != null ? point : new Point(0, 0);
@@ -23,9 +29,8 @@
       return this.point.LineTo();
     };
     Vertex.prototype.removeEdge = function(edge) {
-      if (__indexOf.call(this.edges, edge) >= 0) {
-        return this.edges = this.edges.splice(this.edges.indexOf(edge), 1);
-      }
+      this.edges.remove(edge);
+      return console.log(this.edges.length);
     };
     Vertex.prototype.toString = function() {
       return "(" + this.point.x + ", " + this.point.y + ")[" + this.edges.length + "]";
