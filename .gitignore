@@ -1,1 +1,4 @@
-kaplan_diss_full_print.pdf
+/.bundle
+/build
+/.sass-cache
+.DS_Store
