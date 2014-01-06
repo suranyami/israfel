@@ -7,7 +7,10 @@ gem 'guard-bundler'
 gem 'guard-pow'
 gem 'guard-middleman', github: 'suranyami/guard-middleman'
 gem 'guard-shotgun',   github: 'rchampourlier/guard-shotgun'
+gem 'guard-jasmine'
 
 gem 'bootstrap-sass'
 gem 'haml'
 gem 'thin'
+
+gem 'middleman-jasmine'
