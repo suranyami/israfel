@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#
+# A simple script to build the .jar files.
+#
+
+cd ../..
+jar cvf taprats.jar csk/taprats/*.class csk/taprats/*/*.class
+cd csk/taprats
+mv ../../taprats.jar .
+
+cd ../..
+jar cvf testview.jar csk/taprats/geometry/{Point.class,Transform.class} csk/taprats/toolkit/*.class
+cd csk/taprats
+mv ../../testview.jar .
